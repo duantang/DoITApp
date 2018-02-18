@@ -3,7 +3,7 @@
 //  DoIT
 //
 //  Created by Kevin Schwarz on 18.02.18.
-//  Copyright © 2018 KSARC. All rights reserved.
+//  Copyright © 2018 KSARC. All rights reserved...
 //
 
 import UIKit
