@@ -13,7 +13,7 @@
         <!--To Do Liste-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DoIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TaskViewController" customModule="DoIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="986" y="-665"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Task View Controller-->
         <scene sceneID="tnL-dc-eL1">
             <objects>
-                <viewController id="V2s-rt-kCh" sceneMemberID="viewController">
+                <viewController id="V2s-rt-kCh" customClass="CreateTaskViewController" customModule="DoIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bat-xd-RRz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,6 +81,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQg-I3-GvO">
                                 <rect key="frame" x="148" y="597" width="79" height="30"/>
                                 <state key="normal" title="Hinzufügen"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="V2s-rt-kCh" eventType="touchUpInside" id="TqS-w0-jcM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,6 +103,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jn4-3P-gH9"/>
                     </view>
+                    <connections>
+                        <outlet property="CTNameField" destination="P6v-no-LsU" id="DMg-sR-9Z1"/>
+                        <outlet property="importantSwitch" destination="ZHH-ym-dYc" id="079-O0-OFd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gvi-Mm-oMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
