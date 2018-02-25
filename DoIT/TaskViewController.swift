@@ -9,10 +9,11 @@
 import UIKit
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableViewCT: UITableView!
     
     var tasks : [Task] = []
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +33,20 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = UITableViewCell()
         let task = tasks[indexPath.row]
         if task.important {
-            cell.textLabel?.text = "❗️WICHTIG❗️ \(task.name)"
-        
+            cell.textLabel?.text = "❗️ \(task.name)"
+            
         } else {
             cell.textLabel?.text = task.name
         }
-    
-          return cell
+        
+        return cell
     }
-      
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        let task = tasks[indexPath.row]
+        performSegue(withIdentifier: "selectTaskSegue", sender: task)
+    }
+    
     func makeTasks() -> [Task] {
         let task1 = Task()
         task1.name = "Kim küssen"
@@ -56,10 +62,20 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addItem(_ sender: Any) {
         performSegue(withIdentifier: "newTaskSegue", sender: nil)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextViewController = segue.destination as! CreateTaskViewController
-        nextViewController.prevViewController = self
-    }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newTaskSegue" {
+            let nextViewController = segue.destination as! CreateTaskViewController
+            nextViewController.prevViewController = self
+        }
+        if segue.identifier == "selectTaskSegue" {
+            let nextViewController = segue.destination as! CompleteTaskViewController
+            nextViewController.task = sender as! Task
+            nextViewController.prevViewController = self
+            
+            
+        }
+        
 }
-
+}

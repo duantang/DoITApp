@@ -22,12 +22,14 @@ class CreateTaskViewController: UIViewController {
     @IBAction func addTapped(_ sender: Any) {
         
         let task = Task()
+        if CTNameField != nil {
         task.name = CTNameField.text!
         task.important = importantSwitch.isOn
+        }
         
         prevViewController.tasks.append(task)
         prevViewController.tableViewCT.reloadData()
-        
+        navigationController?.popViewController(animated: true)
     }
  
 }
